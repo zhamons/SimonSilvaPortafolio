@@ -1,0 +1,41 @@
+@inherits LayoutComponentBase
+
+<div class="app-shell">
+
+    <aside class="profile-sidebar">
+        <div>
+            <div class="identity">
+                <p class="name">Simón Silva</p>
+                <p class="role">Desarrollador .NET / SQL Server</p>
+            </div>
+
+            <div class="status">
+                <span class="status-dot"></span>
+                Disponibilidad inmediata
+            </div>
+
+            <div class="contact-block">
+                <a href="mailto:simon.silva.zamora@gmail.com">simon.silva.zamora@gmail.com</a>
+                <span>+56 9 3495 2515</span>
+                <span>Chile</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <NavLink href="" Match="NavLinkMatch.All">Perfil</NavLink>
+                <NavLink href="experiencia">Experiencia</NavLink>
+                <NavLink href="proyectos">Proyectos</NavLink>
+                <NavLink href="skills">Skills</NavLink>
+                <NavLink href="contacto">Contacto</NavLink>
+            </nav>
+        </div>
+
+        <div class="sidebar-footer">
+            &copy; @DateTime.Now.Year
+        </div>
+    </aside>
+
+    <main class="main-content">
+        @Body
+    </main>
+
+</div>

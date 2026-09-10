@@ -1,0 +1,350 @@
+/* ============================================================
+   Portafolio — Simón Silva
+   Sistema visual: "ficha técnica" — precisión, estructura, documentación.
+   ============================================================ */
+
+:root {
+    --paper: #F2F1ED;
+    --paper-raised: #FBFAF8;
+    --ink: #14202B;
+    --ink-soft: #2A3A48;
+    --muted: #5B6672;
+    --line: #D8D5CD;
+    --accent: #2F6FED;
+    --accent-soft: #E8EFFD;
+    --signal: #C9A227;
+
+    --font-display: "Source Serif 4", Georgia, serif;
+    --font-body: "IBM Plex Sans", -apple-system, sans-serif;
+    --font-mono: "IBM Plex Mono", "Courier New", monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-display);
+    color: var(--ink);
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0 0 0.5rem 0;
+}
+
+h1 { font-size: 2.1rem; }
+h2 {
+    font-size: 1.5rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 1.5rem;
+}
+h3 { font-size: 1.15rem; }
+
+p { color: var(--ink-soft); max-width: 62ch; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+::selection { background: var(--accent-soft); }
+
+a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* ---------- App shell ---------- */
+
+.app-shell {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 100vh;
+}
+
+/* ---------- Sidebar / ficha técnica ---------- */
+
+.profile-sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding: 2.5rem 2rem;
+    background: var(--paper);
+    border-right: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.identity .name {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0 0 0.15rem 0;
+}
+
+.identity .role {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin: 0 0 1.25rem 0;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+    margin-bottom: 1.5rem;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--signal);
+    box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.18);
+}
+
+.contact-block {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--muted);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 2rem;
+}
+
+.contact-block a { color: var(--ink-soft); }
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.sidebar-nav a {
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    padding: 0.5rem 0.75rem;
+    margin-left: -0.75rem;
+    border-left: 2px solid transparent;
+    text-decoration: none;
+    transition: border-color 0.12s ease, color 0.12s ease, background 0.12s ease;
+}
+
+.sidebar-nav a:hover {
+    border-left-color: var(--line);
+    background: var(--paper-raised);
+}
+
+.sidebar-nav a.active {
+    color: var(--ink);
+    font-weight: 600;
+    border-left-color: var(--accent);
+    background: var(--paper-raised);
+}
+
+.sidebar-footer {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+}
+
+/* ---------- Main content ---------- */
+
+.main-content {
+    padding: 3.5rem 4rem;
+    max-width: 900px;
+}
+
+section { margin-bottom: 3rem; }
+
+/* ---------- Page transition ---------- */
+/* El elemento raíz de cada página se crea de nuevo al navegar,
+   así que esta animación se dispara sola en cada cambio de ruta. */
+
+.page-enter {
+    animation: page-enter 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes page-enter {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-enter { animation: none; }
+}
+
+/* ---------- Home ---------- */
+
+.hero-intro { margin-bottom: 3rem; }
+.hero-intro h1 { max-width: 20ch; }
+
+.hero-actions {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+}
+
+.hero-actions a { border-bottom: 1px solid var(--accent); padding-bottom: 2px; }
+
+.stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+}
+
+.stack-grid .cell {
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 0.75rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+}
+
+.stack-grid .cell.core { color: var(--ink); font-weight: 600; }
+
+/* ---------- Experiencia (rail) ---------- */
+
+.rail {
+    position: relative;
+    padding-left: 1.75rem;
+    border-left: 1px solid var(--line);
+}
+
+.job { position: relative; padding-bottom: 2.25rem; }
+.job:last-child { padding-bottom: 0; }
+
+.job::before {
+    content: "";
+    position: absolute;
+    left: -1.98rem;
+    top: 0.35rem;
+    width: 8px;
+    height: 8px;
+    background: var(--paper);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+}
+
+.job .period {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.job ul { margin: 0.5rem 0 0 0; padding-left: 1.1rem; color: var(--ink-soft); }
+.job li { margin-bottom: 0.3rem; }
+
+/* ---------- Skills (spec sheet) ---------- */
+
+.spec-group { margin-bottom: 2rem; }
+
+.spec-group h3 {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+}
+
+.spec-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.95rem;
+}
+
+.spec-row:last-child { border-bottom: none; }
+
+.spec-row .level {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+/* ---------- Proyectos (list, not cards) ---------- */
+
+.project-entry { padding: 1.75rem 0; border-bottom: 1px solid var(--line); }
+.project-entry:first-child { padding-top: 0; }
+
+.project-entry .stack {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+    display: block;
+}
+
+.project-entry h3 { margin-bottom: 0.4rem; }
+.project-entry .link { font-family: var(--font-mono); font-size: 0.82rem; }
+
+.note-block {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+    border-left: 2px solid var(--signal);
+    padding: 0.75rem 1rem;
+    background: var(--paper-raised);
+    max-width: 62ch;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 860px) {
+    .app-shell { grid-template-columns: 1fr; }
+
+    .profile-sidebar {
+        position: relative;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        flex-direction: column;
+    }
+
+    .sidebar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+        margin-top: 0.5rem;
+    }
+
+    .sidebar-nav a { margin-left: 0; border-left: none; border-bottom: 2px solid transparent; }
+
+    .sidebar-nav a.active,
+    .sidebar-nav a:hover {
+        border-left-color: transparent;
+        border-bottom-color: var(--accent);
+    }
+
+    .main-content { padding: 2.5rem 1.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+}
