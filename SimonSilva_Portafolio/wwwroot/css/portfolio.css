@@ -304,6 +304,22 @@ section { margin-bottom: 3rem; }
 .project-entry h3 { margin-bottom: 0.4rem; }
 .project-entry .link { font-family: var(--font-mono); font-size: 0.82rem; }
 
+.project-state {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+}
+
+.state-prod { color: #1E7A4C; background: rgba(30, 122, 76, 0.1); }
+.state-review { color: var(--signal); background: rgba(201, 162, 39, 0.12); }
+.state-beta { color: var(--accent); background: var(--accent-soft); }
+
 .note-block {
     font-family: var(--font-mono);
     font-size: 0.8rem;
